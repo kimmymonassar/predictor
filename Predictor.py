@@ -2,7 +2,7 @@ from imageai.Prediction import ImagePrediction
 import os
 import json
 from flask import Flask
-from flask_restful import Api, Resource, reqparse
+from flask_restful import Api, Resource
 from PIL import Image
 import requests
 from io import BytesIO
