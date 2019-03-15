@@ -31,9 +31,8 @@ class Predictor(Resource):
       item = {
         predictions[index] : percentage_probabilities[index]
       }
-      json.dumps(data);
+      json.dumps(data)
       data.append(item)
-      # print(data)
     
     return data
 
