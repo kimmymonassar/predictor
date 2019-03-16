@@ -17,24 +17,27 @@ class Predictor(Resource):
     return 'running', 200
 
   def post(self):
-    imgUrl = request.args.get('imgUrl')
-    response = requests.get(imgUrl)
-    imgFile = Image.open(BytesIO(response.content))
-    currentDir = os.getcwd()
-    imgFile.save(currentDir  + '/images/' + 'imgToGuess.' + imgFile.format)
+    try:
+      imgUrl = request.args.get('imgUrl')
+      response = requests.get(imgUrl)
+      imgFile = Image.open(BytesIO(response.content))
+      currentDir = os.getcwd()
+      imgFile.save(currentDir  + '/images/' + 'imgToGuess.' + imgFile.format)
 
-    predictions, percentage_probabilities = runPrediction(currentDir  + '/images/' + 'imgToGuess.' + imgFile.format)
+      predictions, percentage_probabilities = runPrediction(currentDir  + '/images/' + 'imgToGuess.' + imgFile.format)
 
-    data = []
+      data = []
 
-    for index in range(len(predictions)):
-      item = {
-        predictions[index] : percentage_probabilities[index]
-      }
-      json.dumps(data)
-      data.append(item)
-    
-    return data
+      for index in range(len(predictions)):
+        item = {
+          predictions[index] : percentage_probabilities[index]
+        }
+        json.dumps(data)
+        data.append(item)
+      
+      return data, 200
+    except:
+      return 'Something went wrong', 500
 
 def runPrediction(image):
   prediction = ImagePrediction()
