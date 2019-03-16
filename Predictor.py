@@ -45,4 +45,4 @@ def runPrediction(image):
 
 port = int(os.environ.get('PORT', 5000))
 api.add_resource(Predictor, "/")
-app.run(debug=True, host='0.0.0.0', port=port)
+app.run(debug=True, host='157.230.122.151', port=port)
