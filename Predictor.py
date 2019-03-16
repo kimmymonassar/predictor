@@ -43,5 +43,6 @@ def runPrediction(image):
   prediction.loadModel()
   return prediction.predictImage(image, result_count=5)
 
+port = int(os.environ.get('PORT', 5000))
 api.add_resource(Predictor, "/")
-app.run(debug=True)
+app.run(debug=True, port=port)
