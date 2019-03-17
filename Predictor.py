@@ -3,6 +3,7 @@ import os
 import json
 from flask import Flask
 from flask_restful import Api, Resource
+from flask_cors import CORS, cross_origin
 from PIL import Image
 import requests
 from io import BytesIO
@@ -11,6 +12,8 @@ import numpy as np
 
 app = Flask(__name__)
 api = Api(app)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 class Predictor(Resource):
   def get(self):
