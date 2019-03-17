@@ -19,6 +19,8 @@ class Predictor(Resource):
   def get(self):
     return 'running', 200
 
+  @app.route("/")
+  @cross_origin()
   def post(self):
     try:
       imgUrl = request.args.get('imgUrl')
