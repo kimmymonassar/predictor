@@ -1,6 +1,6 @@
-from imageai.Prediction import ImagePrediction
 import os
 import json
+from prediction import runPrediction
 from flask import Flask
 from flask_restful import Api, Resource
 from flask_cors import CORS, cross_origin
@@ -41,13 +41,6 @@ class Predictor(Resource):
       return data, 200
     except:
       return 'Something went wrong', 500
-
-def runPrediction(image):
-  prediction = ImagePrediction()
-  prediction.setModelTypeAsResNet()
-  prediction.setModelPath("./model/resnet50_weights_tf_dim_ordering_tf_kernels.h5")
-  prediction.loadModel()
-  return prediction.predictImage(image, result_count=5)
 
 port = int(os.environ.get('PORT', 5000))
 api.add_resource(Predictor, "/")
