@@ -22,9 +22,9 @@ def runDetection(image, extention):
       byte_content = img_file.read()
   
   #remove files
-  os.remove("./images/imgToGuessNew." + extention)
-  if os.path.isfile("./images/imgToGuess." + extention):
-    os.remove("./images/imgToGuess." + extention)
+  # os.remove("./images/imgToGuessNew." + extention)
+  # if os.path.isfile("./images/imgToGuess." + extention):
+  #   os.remove("./images/imgToGuess." + extention)
   
   base64_bytes = b64encode(byte_content)
   base64_string = base64_bytes.decode(ENCODING)
