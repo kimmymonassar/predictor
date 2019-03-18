@@ -12,7 +12,7 @@ def runDetection(image, extention):
   detector.setModelPath("./src/model/resnet50_coco_best_v2.0.1.h5")
   detector.loadModel()
   detector.detectObjectsFromImage(input_image=image, output_image_path="./images/imgToGuessNew." + extention, minimum_percentage_probability=30)
-  with open("./images/imgToGuess." + extention, "rb") as img_file:
+  with open("./images/imgToGuessNew." + extention, "rb") as img_file:
     byte_content = img_file.read()
   
   #remove file
