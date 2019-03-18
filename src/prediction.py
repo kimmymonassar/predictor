@@ -9,6 +9,7 @@ def runPrediction(image, extention):
   result = prediction.predictImage(image, result_count=5)
 
   #remove file
-  os.remove("./images/imgToGuess." + extention)
+  if os.path.isfile("./images/imgToGuess." + extention):
+    os.remove("./images/imgToGuess." + extention)
 
   return result
