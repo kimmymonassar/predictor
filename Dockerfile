@@ -22,6 +22,7 @@ RUN apt-get update -y && apt-get install -y \
     libavformat-dev \
     libswscale-dev
 
+RUN apt-get update && apt-get -y install libglib2.0; apt-get clean
 RUN pip install --no-cache-dir -r requirements.txt
 
 CMD [ "python", "./src/main.py" ]
