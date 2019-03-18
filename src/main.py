@@ -35,7 +35,7 @@ class Detector(Resource):
       data = []
       data.append(json.dumps(detectionBase64))
       
-      return data, 200
+      return data, 200 
     else:
       return 'Unsupported file format, valid format is PNG, JPG, JPEG', 500
     # except:
