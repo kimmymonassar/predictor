@@ -1,5 +1,6 @@
 from imageai.Detection import ObjectDetection
 import os
+import time
 from base64 import b64encode
 
 ENCODING = "utf-8"
@@ -12,8 +13,13 @@ def runDetection(image, extention):
   detector.setModelPath("./src/model/resnet50_coco_best_v2.0.1.h5")
   detector.loadModel()
   detector.detectObjectsFromImage(input_image=image, output_image_path="./images/imgToGuessNew." + extention, minimum_percentage_probability=30)
-  with open("./images/imgToGuessNew." + extention, "rb") as img_file:
-    byte_content = img_file.read()
+  
+  while not os.path.exists("./images/imgToGuessNew." + extention):
+    time.sleep(1)
+
+  if os.path.isfile("./images/imgToGuessNew." + extention):
+    with open("./images/imgToGuessNew." + extention, "rb") as img_file:
+      byte_content = img_file.read()
   
   #remove file
   os.remove("./images/imgToGuessNew." + extention)
